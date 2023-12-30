@@ -32,5 +32,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('admin/post/post-category',[PostCategoryController::class,'store']);
 
     Route::get('admin/post/view',[PostController::class,'index']);
+
+    Route::post('admin/post/create',[PostController::class,'store']);
+    Route::get('admin/post/view-posts',[PostController::class,'viewPost']);
+
+    Route::get('admin/post/view-posts/delete/{id}',[PostController::class,'destroy']);
 });
 

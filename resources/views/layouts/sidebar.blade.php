@@ -47,6 +47,7 @@
                         <li  class=" {{request()->is('admin/post/post-category')?'active':""}}">
                             <a href="{{url('admin/post/post-category')}}">Category</a></li>
                         <li  class=" {{request()->is('admin/post/view')?'active':""}}"><a href="{{url('admin/post/view')}}">Posts</a></li>
+                        <li  class=" {{request()->is('admin/post/view-posts')?'active':""}}"><a href="{{url('admin/post/view-posts')}}">View Posts</a></li>
                     </ul>
                 </li>
               

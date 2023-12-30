@@ -39,34 +39,48 @@
             <section class="content">
                 <div class="container">
 
-                <form action="{{url('/')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('admin/post/create')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="firstName1">Title :</label>
                                 <input type="text" class="form-control" id="firstName1" name="title">
+                                @error('title')
+                                <p class="text-danger">{{$message}}</p>
+                                    
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="location2">Select City :</label>
-                                <select class="custom-select form-control" id="location2" name="location">
-                                    <option value="">Select City</option>
-                                    <option value="Amsterdam">India</option>
-                                    <option value="Berlin">USA</option>
-                                    <option value="Frankfurt">Dubai</option>
+                                <label for="location2">Select Category :</label>
+                                <select class="custom-select form-control" id="location2" name="category_id">
+                                    @foreach ($category as $data)
+                                    <option value="{{$data->id}}">{{$data->title}}</option>
+                                    @endforeach
+                                    
+                                 
                                 </select>
                             </div>
                         </div>
                     </div>
 
                     <label for="firstName1">Description :</label>
-                    <div id="editor">
+                    <textarea id="editor" name="description"></textarea>
+                        @error('description')
+                        <p class="text-danger">{{$message}}</p>
+                            
+                        @enderror
 
-                    </div>
+                    
                     <label for="firstName1">Post Image :</label>
-                    <div class="input-images-2" style="padding-bottom: .5rem;"></div>
+                    <input type="file" class="input-images-2 form-control" style="padding-bottom: .5rem;" name="post_image"/>
+                    @error('post_image')
+                    <p class="text-danger">{{$message}}</p>
+                        
+                    @enderror
                     <br>
                     <button type="submit" class="btn btn-primary">Publish Post</button>
 

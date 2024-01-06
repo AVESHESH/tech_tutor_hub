@@ -14,8 +14,8 @@ class PostCategoryController extends Controller
      */
     public function index()
     {
-        $category=PostCategory::with('posts')->latest()->get();
-        return PostCategoryResource::collection($category);
+        $category=PostCategory::latest()->get();     
+        return response()->json($category);
     }
 
     /**
@@ -31,7 +31,13 @@ class PostCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category=PostCategory::where('id', $id)->first();
+        if(is_null($category)){
+            return response()->json('id not found', 404);
+        }
+        else{
+            return new PostCategoryResource($category);
+        }
     }
 
     /**

@@ -20,3 +20,4 @@ Route::get('posts',[PostController::class,'index']);
 Route::get('posts/{id}',[PostController::class,'show']);
 
 Route::get('post-category',[PostCategoryController::class,'index']);
+Route::get('post-category/{id}',[PostCategoryController::class,'show']);

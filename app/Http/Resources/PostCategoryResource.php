@@ -19,7 +19,7 @@ class PostCategoryResource extends JsonResource
             'title'=>$this->title,
             'slug'=>$this->slug,
             'created_at'=>$this->created_at,
-            'post_id'=>$this->posts??null,
+            'post'=>PostResource::collection($this->posts)??null,
         ];
     }
 }

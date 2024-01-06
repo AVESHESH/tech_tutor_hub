@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostCategoryResource;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class PostCategoryController extends Controller
      */
     public function index()
     {
-        $category=PostCategory::latest()->get();
-        return response()->json($category);
+        $category=PostCategory::with('posts')->latest()->get();
+        return PostCategoryResource::collection($category);
     }
 
     /**
